@@ -21,7 +21,7 @@ RECIPES_URL = reverse('recipe:recipe-list')
 
 
 def image_upload_url(recipe_id):
-    """ Return URL fr recipe image upload """
+    """ Return URL for recipe image upload """
     return reverse('recipe:recipe-upload-image', args = [recipe_id])
 
 def detail_url(recipe_id):
@@ -219,7 +219,7 @@ class RecipeImageUploadTests(TestCase):
     def setUp(self):
         self.client = APIClient()
         self.user = get_user_model().objects.create_user(
-            'test@gmail.com',
+            'user@gmail.com',
             'some_pass'
         )
         self.client.force_authenticate(self.user)
@@ -228,10 +228,10 @@ class RecipeImageUploadTests(TestCase):
     def tearDown(self):
         self.recipe.image.delete()
 
-    def test_image_upload_to_recipe(self):
+    def test_upload_image_to_recipe(self):
         """Test uploading an image to recipe"""
         url = image_upload_url(self.recipe.id)
-        with tempfile.NamedTemporaryFile(suffix='jpg') as ntf:
+        with tempfile.NamedTemporaryFile(suffix='.jpg') as ntf:
             img = Image.new('RGB', (10, 10))
             img.save(ntf, format='JPEG')
             ntf.seek(0)

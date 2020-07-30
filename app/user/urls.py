@@ -11,5 +11,4 @@ urlpatterns = [
     path('me/', views.ManageUserView.as_view(), name = 'me'),
 ]
 
-# 85900c1b9401ef534a3de3069bf46a342a20fe6f
-# ce53a1e498dae0aae08fb5b69ab8c20792376ef6
+# fb78f9f22593cef402a485074856f17a958d95c7
